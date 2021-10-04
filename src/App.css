@@ -3,7 +3,12 @@
   padding: 0;
 }
 
+.nav-wrapper {
+  text-align: right;
+}
+
 .logo {
-  width: 100px;
+  width: 80px;
   margin: 0 10px;
+  float: left;
 }
