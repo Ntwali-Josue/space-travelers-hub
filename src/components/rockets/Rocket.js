@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { reserveRocket } from '../../redux/rockets/rocketsReducer';
+import { reserveRocket, cancelRocket } from '../../redux/rockets/rocketsReducer';
 import './Rocket.css';
 
 const Rocket = (props) => {
@@ -14,22 +14,36 @@ const Rocket = (props) => {
     description,
   } = props;
 
-  const handleRocketReservation = () => {
+  const handleReservation = () => {
     if (reservation.status === false) {
       reservation.status = true;
       dispatch(reserveRocket({ id, name }));
     }
   };
 
-  const isReserved = reservedRockets.map(
-    (rocket) => {
-      if (rocket.id === id) {
-        return (
-          <span key={rocket.id} className="reserved">Reserved</span>
-        );
-      }
-      return '';
-    },
+  const handleCancellation = () => {
+    if (reservation.status === true) {
+      reservation.status = false;
+      dispatch(cancelRocket(reservedRockets.filter((rocket) => rocket.id !== id)));
+    }
+  };
+
+  const reserveButton = () => (
+    <input
+      type="button"
+      value="Reserve Rocket"
+      className="btn btn-primary"
+      onClick={handleReservation}
+    />
+  );
+
+  const cancelButton = () => (
+    <input
+      type="button"
+      value="Cancel Reservation"
+      className="btn btn-light border text-secondary"
+      onClick={handleCancellation}
+    />
   );
 
   return (
@@ -38,15 +52,10 @@ const Rocket = (props) => {
       <div className="ps-4">
         <h2>{name}</h2>
         <p>
-          {isReserved}
+          {reservation.status === true && <span className="reserved">Reserved</span>}
           {description}
         </p>
-        <input
-          type="button"
-          value="Reserve Rocket"
-          className="btn btn-primary"
-          onClick={handleRocketReservation}
-        />
+        {reservation.status === false ? reserveButton() : cancelButton()}
       </div>
     </div>
   );
