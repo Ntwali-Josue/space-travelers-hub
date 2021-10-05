@@ -15,9 +15,9 @@ const NavBar = () => (
           <h1>Space Travelers Hub</h1>
         </Navbar.Brand>
         <Nav className="nav-links p-2">
-          <Link to="/" exact>Rockets</Link>
-          <Link to="/missions" className="px-3">Missions</Link>
-          <Link to="/profile" className="border-start px-2 border-dark">My Profile</Link>
+          <Link to="/" exact className="text-decoration-none">Rockets</Link>
+          <Link to="/missions" className="px-3 text-decoration-none ">Missions</Link>
+          <Link to="/profile" className="border-start px-2 border-dark text-decoration-none">My Profile</Link>
         </Nav>
       </Container>
     </Navbar>
