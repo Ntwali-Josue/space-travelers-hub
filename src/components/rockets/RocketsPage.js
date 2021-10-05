@@ -1,7 +1,7 @@
 const RocketsPage = () => (
-  <div>
+  <section>
     <p>Rockets... Under construction.</p>
-  </div>
+  </section>
 );
 
 export default RocketsPage;
