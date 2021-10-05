@@ -1,0 +1,11 @@
+.rocket-img {
+  width: 20rem;
+}
+
+.reserved {
+  margin-right: 0.5rem;
+  padding: 0 0.3rem;
+  background-color: hsl(188, 73%, 42%);
+  color: white;
+  border-radius: 0.28rem;
+}
