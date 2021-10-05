@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   Navbar, Container, Nav,
 } from 'react-bootstrap';
@@ -15,9 +15,9 @@ const NavBar = () => (
           <h1>Space Travelers Hub</h1>
         </Navbar.Brand>
         <Nav className="nav-links p-2">
-          <Link to="/" exact>Rockets</Link>
-          <Link to="/missions" className="px-3">Missions</Link>
-          <Link to="/profile" className="border-start px-2 border-dark">My Profile</Link>
+          <NavLink to="/" exact className="text-decoration-none" activeClassName="text-decoration-underline">Rockets</NavLink>
+          <NavLink to="/missions" className="px-3 text-decoration-none" activeClassName="text-decoration-underline">Missions</NavLink>
+          <NavLink to="/profile" className="border-start px-2 border-dark text-decoration-none" activeClassName="text-decoration-underline">My Profile</NavLink>
         </Nav>
       </Container>
     </Navbar>
