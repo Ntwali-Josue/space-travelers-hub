@@ -19,7 +19,7 @@ const RocketsPage = () => {
       <Rocket
         key={rocket.id}
         id={rocket.rocket_id}
-        reserved={false}
+        reservation={{ status: false }}
         imgURL={`${rocket.flickr_images[1]}`}
         name={rocket.rocket_name}
         description={rocket.description}

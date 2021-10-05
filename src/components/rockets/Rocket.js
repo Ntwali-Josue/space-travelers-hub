@@ -6,16 +6,19 @@ import './Rocket.css';
 const Rocket = (props) => {
   const dispatch = useDispatch();
   const reservedRockets = useSelector((state) => state.rockets.reservedRockets);
-
   const {
     id,
+    reservation,
     imgURL,
     name,
     description,
   } = props;
 
   const handleRocketReservation = () => {
-    dispatch(reserveRocket({ id, name }));
+    if (reservation.status === false) {
+      reservation.status = true;
+      dispatch(reserveRocket({ id, name }));
+    }
   };
 
   const isReserved = reservedRockets.map(
@@ -38,7 +41,12 @@ const Rocket = (props) => {
           {isReserved}
           {description}
         </p>
-        <input type="button" value="Reserve Rocket" className="btn btn-primary" onClick={handleRocketReservation} />
+        <input
+          type="button"
+          value="Reserve Rocket"
+          className="btn btn-primary"
+          onClick={handleRocketReservation}
+        />
       </div>
     </div>
   );
@@ -46,6 +54,7 @@ const Rocket = (props) => {
 
 Rocket.propTypes = {
   id: PropTypes.string,
+  reservation: PropTypes.shape(),
   imgURL: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
@@ -53,6 +62,7 @@ Rocket.propTypes = {
 
 Rocket.defaultProps = {
   id: '',
+  reservation: { status: false },
   imgURL: '',
   name: '',
   description: '',
