@@ -1,6 +1,6 @@
 const Rocket = () => (
   <div>
-    <p>This is rocket</p>
+    <p>Rocket</p>
   </div>
 );
 

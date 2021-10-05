@@ -1,7 +1,7 @@
+import Rocket from './Rocket';
+
 const RocketsPage = () => (
-  <section>
-    <p>Rockets... Under construction.</p>
-  </section>
+  <Rocket />
 );
 
 export default RocketsPage;
