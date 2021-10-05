@@ -8,6 +8,6 @@ const fetchAPI = async (URL) => {
   });
   const response = await request.json();
   return response;
-}
+};
 
 export default fetchAPI;
