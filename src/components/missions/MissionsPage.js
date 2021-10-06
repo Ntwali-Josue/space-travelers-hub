@@ -14,20 +14,19 @@ const MissionsPage = () => {
     }
   }, [status]);
 
+  const allMissions = missions.map((mission) => (
+    <Mission
+      key={mission.id}
+      id={mission.mission_id}
+      joinStatus={{ status: false }}
+      missionName={mission.mission_name}
+      description={mission.description}
+    />
+  ));
+
   return (
     <div>
-      {
-        missions.map((mission) => (
-          <Mission
-            key={mission.id}
-            id={mission.mission_id}
-            joinStatus={{ status: false }}
-            missionName={mission.mission_name}
-            description={mission.description}
-          />
-        ))
-      }
-      <Mission />
+      {allMissions}
     </div>
   );
 };
