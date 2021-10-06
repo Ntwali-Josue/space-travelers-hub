@@ -19,7 +19,6 @@ const RocketsPage = () => {
       <Rocket
         key={rocket.id}
         id={rocket.rocket_id}
-        reservation={{ status: false }}
         imgURL={`${rocket.flickr_images[1]}`}
         name={rocket.rocket_name}
         description={rocket.description}
@@ -30,7 +29,6 @@ const RocketsPage = () => {
   return (
     <section>
       {mapRockets}
-      <p>.</p>
     </section>
   );
 };

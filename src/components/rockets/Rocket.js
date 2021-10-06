@@ -8,24 +8,25 @@ const Rocket = (props) => {
   const reservedRockets = useSelector((state) => state.rockets.reservedRockets);
   const {
     id,
-    reservation,
     imgURL,
     name,
     description,
   } = props;
 
-  const handleReservation = () => {
-    if (reservation.status === false) {
-      reservation.status = true;
-      dispatch(reserveRocket({ id, name }));
+  const isReserved = () => {
+    const reservation = reservedRockets.filter((rocket) => rocket.id === id);
+    if (reservation[0] === undefined) {
+      return true;
     }
+    return false;
+  };
+
+  const handleReservation = () => {
+    dispatch(reserveRocket({ id, name }));
   };
 
   const handleCancellation = () => {
-    if (reservation.status === true) {
-      reservation.status = false;
-      dispatch(cancelRocket(reservedRockets.filter((rocket) => rocket.id !== id)));
-    }
+    dispatch(cancelRocket(reservedRockets.filter((rocket) => rocket.id !== id)));
   };
 
   const reserveButton = () => (
@@ -52,10 +53,10 @@ const Rocket = (props) => {
       <div className="ps-4">
         <h2>{name}</h2>
         <p>
-          {reservation.status === true && <span className="reserved">Reserved</span>}
+          {isReserved() || <span className="reserved">Reserved</span>}
           {description}
         </p>
-        {reservation.status === false ? reserveButton() : cancelButton()}
+        {isReserved() ? reserveButton() : cancelButton()}
       </div>
     </div>
   );
@@ -63,7 +64,6 @@ const Rocket = (props) => {
 
 Rocket.propTypes = {
   id: PropTypes.string,
-  reservation: PropTypes.shape(),
   imgURL: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
@@ -71,7 +71,6 @@ Rocket.propTypes = {
 
 Rocket.defaultProps = {
   id: '',
-  reservation: { status: false },
   imgURL: '',
   name: '',
   description: '',
