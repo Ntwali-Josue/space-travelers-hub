@@ -16,7 +16,7 @@ const MissionsPage = () => {
 
   const allMissions = missions.map((mission) => (
     <Mission
-      key={mission.id}
+      key={mission.mission_id}
       id={mission.mission_id}
       joinStatus={{ status: false }}
       missionName={mission.mission_name}
