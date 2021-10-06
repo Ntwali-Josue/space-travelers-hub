@@ -9,7 +9,7 @@ const LEAVE_MISSION = 'spaceX/missions/LEAVE_MISSIONS';
 const initialState = {
   status: 'empty',
   missionList: [],
-  joinMission: [],
+  joinedMission: [],
 };
 
 export const fetchMission = createAsyncThunk('spaceX/missions/FETCH_MISSIONS', async () => {
@@ -17,7 +17,7 @@ export const fetchMission = createAsyncThunk('spaceX/missions/FETCH_MISSIONS', a
   return result;
 });
 
-export const joinMisssion = (payload) => ({
+export const joinMission = (payload) => ({
   type: JOIN_MISSION,
   payload,
 });
@@ -33,18 +33,19 @@ const missionsReducer = (state = initialState, action) => {
       return {
         status: 'fetched',
         missionList: [...state.missionList, ...action.payload],
+        joinedMission: [],
       };
     case JOIN_MISSION:
       return {
         status: state.status,
         missionList: state.missionList,
-        joinMission: [...state.joinMission, action.payload],
+        joinedMission: [...state.joinedMission, action.payload],
       };
     case LEAVE_MISSION:
       return {
         status: state.status,
         missionList: state.missionList,
-        joinMission: [...action.payload],
+        joinedMission: [...action.payload],
       };
     default:
       return state;
