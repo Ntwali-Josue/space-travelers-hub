@@ -44,7 +44,7 @@ const missionsReducer = (state = initialState, action) => {
       return {
         status: state.status,
         missionList: state.missionList,
-        joinMisssion: [...action.payload],
+        joinMission: [...action.payload],
       };
     default:
       return state;
