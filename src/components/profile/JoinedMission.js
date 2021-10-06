@@ -5,19 +5,12 @@ const AllJoinedMissions = () => {
 
   const getJoinedMission = joinedMission.filter((mission) => mission);
 
-  console.log(getJoinedMission);
+  const renderJoinedMissions = getJoinedMission.map((mission) => (
+    <ul key={mission.mission_id} className="list-group w-25 mx-5">
+      <li className="list-group-item py-3">{mission.missionName}</li>
+    </ul>
+  ));
 
-  // eslint-disable-next-line array-callback-return
-  const renderJoinedMissions = getJoinedMission.map((mission) => {
-    console.log(mission.missionName);
-    return (
-      <ul key={mission.mission_id} className="list-group w-25 mx-5">
-        <li className="list-group-item py-3">{mission.missionName}</li>
-      </ul>
-    );
-  });
-
-  console.log(renderJoinedMissions);
   return (
     <>
       <h1 className="mx-5">Missions</h1>
