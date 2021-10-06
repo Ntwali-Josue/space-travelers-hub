@@ -2,18 +2,11 @@ import { useSelector } from 'react-redux';
 
 const AllJoinedMissions = () => {
   const joinedMission = useSelector((state) => state.missions.joinedMission);
-  // console.log(joinedMission[0].missionName);
 
   const getJoinedMission = joinedMission.filter((mission) => mission);
 
   console.log(getJoinedMission);
 
-  // const displayJoinedMission = () => {
-  //   for (let i = 0; i < getJoinedMission.length; i += 1) {
-  //     return getJoinedMission[i].missionName;
-  //   }
-  //   return <h1 className="text-center">No joined mission yet</h1>;
-  // };
 
   // eslint-disable-next-line array-callback-return
   const renderJoinedMissions = getJoinedMission.map((mission) => {
