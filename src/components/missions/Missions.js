@@ -1,11 +1,34 @@
-/* eslint-disable react/prop-types */
 // import { } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { Table, Button } from 'react-bootstrap';
+import {
+  joinMisssion,
+  leaveMission,
+} from '../../redux/missions/missionsReducer';
 
 const Mission = (props) => {
-  // const dispatch = useDispatch();
-  const { missionName, description } = props;
+  const {
+    id, joinStatus, missionName, description,
+  } = props;
+  const dispatch = useDispatch();
+  const joinMission = useSelector((state) => state.missions.joinMission);
+
+  const handleJoinMission = () => {
+    if (joinStatus.status === false) {
+      joinStatus.status = true;
+      dispatch(joinMisssion({ id, missionName }));
+    }
+  };
+
+  const handleLeaveMission = () => {
+    if (joinStatus.status === true) {
+      joinStatus.status = false;
+      dispatch(
+        leaveMission(joinMission.filter((mission) => mission.id !== id)),
+      );
+    }
+  };
 
   return (
     <Table striped bordered hover>
@@ -23,9 +46,18 @@ const Mission = (props) => {
           <td>{description}</td>
           <td>Not a member</td>
           <td>
-            {' '}
-            <Button>Join Mission</Button>
-            {' '}
+            <Button
+              onClick={
+                joinStatus.status === false
+                  ? handleJoinMission()
+                  : handleLeaveMission()
+              }
+            >
+              {joinStatus.status === false
+                ? 'Join Mission'
+                : 'Leave mission'}
+            </Button>
+            ;
           </td>
         </tr>
       </tbody>
@@ -34,11 +66,15 @@ const Mission = (props) => {
 };
 
 Mission.propTypes = {
+  id: PropTypes.string,
+  joinStatus: PropTypes.string,
   missionName: PropTypes.string,
   description: PropTypes.string,
 };
 
 Mission.defaultProps = {
+  id: '',
+  joinStatus: { status: false },
   missionName: '',
   description: '',
 };
