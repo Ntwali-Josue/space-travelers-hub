@@ -7,7 +7,6 @@ const AllJoinedMissions = () => {
 
   console.log(getJoinedMission);
 
-
   // eslint-disable-next-line array-callback-return
   const renderJoinedMissions = getJoinedMission.map((mission) => {
     console.log(mission.missionName);
@@ -26,13 +25,5 @@ const AllJoinedMissions = () => {
     </>
   );
 };
-
-// AllJoinedMissions.propTypes = {
-//   joinStatus: PropTypes.shape(),
-// };
-
-// AllJoinedMissions.defaultProps = {
-//   joinStatus: { status: false },
-// };
 
 export default AllJoinedMissions;
