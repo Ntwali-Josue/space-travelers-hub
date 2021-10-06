@@ -1,19 +1,26 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import fetchAPI from '../fetchAPI';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import fetchAPI from '../fetchAPI';
+// import axios from 'axios'
 
-const FETCH_MISSIONS = 'spaceX/missions/FETCH_MISSIONS/';
+const FETCH_MISSIONS = 'spaceX/missions/FETCH_MISSIONS/fulfilled';
 
-const initialState = [];
+const initialState = {
+  status: 'empty',
+  missionList: [],
+};
 
-export const fetchMissions = (payload) => ({
-  type: FETCH_MISSIONS,
-  payload,
+export const fetchMission = createAsyncThunk('spaceX/missions/FETCH_MISSIONS', async () => {
+  const result = await fetchAPI('https://api.spacexdata.com/v3/missions');
+  return result;
 });
 
 const missionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_MISSIONS:
-      return [...state, action.payload];
+      return {
+        status: 'fetched',
+        missionList: [...state.missionList, ...action.payload],
+      };
     default:
       return state;
   }
