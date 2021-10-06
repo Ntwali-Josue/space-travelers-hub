@@ -6,6 +6,7 @@ import {
   joinMission,
   leaveMission,
 } from '../../redux/missions/missionsReducer';
+import './Mission.css';
 
 const Mission = (props) => {
   const {
@@ -34,21 +35,36 @@ const Mission = (props) => {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Mission</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th> </th>
+          <th className="mission">Mission</th>
+          <th className="desc">Description</th>
+          <th className="status">Status</th>
+          <th className="actions"> </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{missionName}</td>
+          <td className="mission-names">{missionName}</td>
           <td>{description}</td>
-          <td>Not a member</td>
+          {joinStatus.status === false ? (
+            <td className="text-center">
+              {' '}
+              <span className="bg-secondary rounded-pill px-2">
+                NOT A MEMBER
+              </span>
+            </td>
+          ) : (
+            <td className="text-white">
+              <span className="bg-info rounded-pill px-2">Active Member</span>
+            </td>
+          )}
           <td>
-            {joinStatus.status === false
-              ? <Button onClick={handleJoinMission}>Join Mission</Button>
-              : <Button onClick={handleLeaveMission}>Leave Mission</Button>}
+            {joinStatus.status === false ? (
+              <Button onClick={handleJoinMission}>Join Mission</Button>
+            ) : (
+              <Button onClick={handleLeaveMission} className="bg-danger">
+                Leave Mission
+              </Button>
+            )}
           </td>
         </tr>
       </tbody>
