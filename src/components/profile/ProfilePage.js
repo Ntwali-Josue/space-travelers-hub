@@ -1,6 +1,8 @@
+import AllJoinedMissions from './JoinedMission';
+
 const ProfilePage = () => (
   <div>
-    <p>Profile... Under construction.</p>
+    <AllJoinedMissions />
   </div>
 );
 

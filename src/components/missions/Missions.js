@@ -10,25 +10,25 @@ import './Mission.css';
 
 const Mission = (props) => {
   const {
-    id, joinStatus, missionName, description,
+    id, missionName, description,
   } = props;
   const dispatch = useDispatch();
   const joinedMission = useSelector((state) => state.missions.joinedMission);
 
-  const handleJoinMission = () => {
-    if (joinStatus.status === false) {
-      joinStatus.status = true;
-      dispatch(joinMission({ id, missionName }));
+  const isJoined = () => {
+    const joined = joinedMission.filter((mission) => mission.id === id);
+    if (joined[0] === undefined) {
+      return true;
     }
+    return false;
+  };
+
+  const handleJoinMission = () => {
+    dispatch(joinMission({ id, missionName }));
   };
 
   const handleLeaveMission = () => {
-    if (joinStatus.status === true) {
-      joinStatus.status = false;
-      dispatch(
-        leaveMission(joinedMission.filter((mission) => mission.id !== id)),
-      );
-    }
+    dispatch(leaveMission(joinedMission.filter((mission) => mission.id !== id)));
   };
 
   return (
@@ -45,7 +45,7 @@ const Mission = (props) => {
         <tr>
           <td className="mission-names">{missionName}</td>
           <td>{description}</td>
-          {joinStatus.status === false ? (
+          {isJoined() ? (
             <td className="text-center">
               {' '}
               <span className="bg-secondary rounded-pill px-2">
@@ -58,7 +58,7 @@ const Mission = (props) => {
             </td>
           )}
           <td>
-            {joinStatus.status === false ? (
+            {isJoined() ? (
               <Button onClick={handleJoinMission}>Join Mission</Button>
             ) : (
               <Button onClick={handleLeaveMission} className="bg-danger">
@@ -74,14 +74,12 @@ const Mission = (props) => {
 
 Mission.propTypes = {
   id: PropTypes.string,
-  joinStatus: PropTypes.shape(),
   missionName: PropTypes.string,
   description: PropTypes.string,
 };
 
 Mission.defaultProps = {
   id: '',
-  joinStatus: { status: false },
   missionName: '',
   description: '',
 };
