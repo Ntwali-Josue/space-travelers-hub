@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux';
 
 const AllJoinedMissions = () => {
-  // const { joinStatus } = props;
-  // const dispatch = useDispatch();
   const joinedMission = useSelector((state) => state.missions.joinedMission);
   // console.log(joinedMission[0].missionName);
 
