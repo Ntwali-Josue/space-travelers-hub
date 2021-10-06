@@ -46,18 +46,9 @@ const Mission = (props) => {
           <td>{description}</td>
           <td>Not a member</td>
           <td>
-            <Button
-              onClick={
-                joinStatus.status === false
-                  ? handleJoinMission()
-                  : handleLeaveMission()
-              }
-            >
-              {joinStatus.status === false
-                ? 'Join Mission'
-                : 'Leave mission'}
-            </Button>
-            ;
+            {joinStatus.status === false
+              ? <Button onClick={handleJoinMission}>Join Mission</Button>
+              : <Button onClick={handleLeaveMission}>Leave Mission</Button>}
           </td>
         </tr>
       </tbody>
@@ -67,7 +58,7 @@ const Mission = (props) => {
 
 Mission.propTypes = {
   id: PropTypes.string,
-  joinStatus: PropTypes.string,
+  joinStatus: PropTypes.shape(),
   missionName: PropTypes.string,
   description: PropTypes.string,
 };
