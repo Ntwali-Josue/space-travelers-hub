@@ -3,6 +3,7 @@ import fetchAPI from '../fetchAPI';
 
 const FETCH_ROCKETS = 'spaceX/rockets/FETCH_ROCKETS/fulfilled';
 const RESERVE_ROCKET = 'spaceX/rockets/RESERVE_ROCKET';
+const CANCEL_ROCKET = 'spaceX/rockets/CANCEL_ROCKET';
 
 const initialState = {
   status: 'empty',
@@ -20,6 +21,11 @@ export const reserveRocket = (payload) => ({
   payload,
 });
 
+export const cancelRocket = (payload) => ({
+  type: CANCEL_ROCKET,
+  payload,
+});
+
 const rocketsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ROCKETS:
@@ -33,6 +39,12 @@ const rocketsReducer = (state = initialState, action) => {
         status: state.status,
         rocketList: state.rocketList,
         reservedRockets: [...state.reservedRockets, action.payload],
+      };
+    case CANCEL_ROCKET:
+      return {
+        status: state.status,
+        rocketList: state.rocketList,
+        reservedRockets: [...action.payload],
       };
     default:
       return state;
