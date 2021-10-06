@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Table, Button } from 'react-bootstrap';
 import {
-  joinMisssion,
+  joinMission,
   leaveMission,
 } from '../../redux/missions/missionsReducer';
 
@@ -12,12 +12,12 @@ const Mission = (props) => {
     id, joinStatus, missionName, description,
   } = props;
   const dispatch = useDispatch();
-  const joinMission = useSelector((state) => state.missions.joinMission);
+  const joinedMission = useSelector((state) => state.missions.joinedMission);
 
   const handleJoinMission = () => {
     if (joinStatus.status === false) {
       joinStatus.status = true;
-      dispatch(joinMisssion({ id, missionName }));
+      dispatch(joinMission({ id, missionName }));
     }
   };
 
@@ -25,7 +25,7 @@ const Mission = (props) => {
     if (joinStatus.status === true) {
       joinStatus.status = false;
       dispatch(
-        leaveMission(joinMission.filter((mission) => mission.id !== id)),
+        leaveMission(joinedMission.filter((mission) => mission.id !== id)),
       );
     }
   };
