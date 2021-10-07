@@ -8,7 +8,6 @@ const CANCEL_ROCKET = 'spaceX/rockets/CANCEL_ROCKET';
 const initialState = {
   status: 'empty',
   rocketList: [],
-  reservedRockets: [],
 };
 
 export const fetchRockets = createAsyncThunk('spaceX/rockets/FETCH_ROCKETS', async () => {
@@ -32,19 +31,16 @@ const rocketsReducer = (state = initialState, action) => {
       return {
         status: 'fetched',
         rocketList: [...state.rocketList, ...action.payload],
-        reservedRockets: [],
       };
     case RESERVE_ROCKET:
       return {
         status: state.status,
-        rocketList: state.rocketList,
-        reservedRockets: [...state.reservedRockets, action.payload],
+        rocketList: [...action.payload],
       };
     case CANCEL_ROCKET:
       return {
         status: state.status,
-        rocketList: state.rocketList,
-        reservedRockets: [...action.payload],
+        rocketList: [...action.payload],
       };
     default:
       return state;
