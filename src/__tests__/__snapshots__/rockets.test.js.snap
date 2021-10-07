@@ -5,3 +5,9 @@ exports[`Rockets reducer initial state 1`] = `
   Space Travelers Hub
 </h1>
 `;
+
+exports[`Rockets reducer initial state 2`] = `
+<h2>
+  Falcon 1
+</h2>
+`;
