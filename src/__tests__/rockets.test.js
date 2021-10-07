@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../redux/configureStore';
 import rocketsReducer from '../redux/rockets/rocketsReducer';
@@ -66,5 +66,8 @@ describe('Rockets reducer', () => {
       </Provider>
     );
     expect(screen.getByText('Falcon 1')).toMatchSnapshot();
+    expect(screen.getByText('Falcon 9')).toMatchSnapshot();
+    expect(screen.getByText('Falcon Heavy')).toMatchSnapshot();
+    expect(screen.getByText('Starship')).toMatchSnapshot();
   });
 });
