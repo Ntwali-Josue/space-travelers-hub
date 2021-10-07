@@ -24,7 +24,7 @@ describe('Mission reducer', () => {
     };
 
     const action = {
-      type: 'spaceX/mission/FETCH_MISSIONS/fulfilled',
+      type: 'spaceX/missions/FETCH_MISSIONS/fulfilled',
       payload: [{ name: 'Thaicom' }, { name: 'Iridium NEXT' }],
     };
 
