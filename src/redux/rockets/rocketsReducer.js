@@ -11,7 +11,7 @@ const initialState = {
   reservedRockets: [],
 };
 
-export const fetchRocket = createAsyncThunk('spaceX/rockets/FETCH_ROCKETS', async () => {
+export const fetchRockets = createAsyncThunk('spaceX/rockets/FETCH_ROCKETS', async () => {
   const response = await fetchAPI('https://api.spacexdata.com/v3/rockets');
   return response;
 });
