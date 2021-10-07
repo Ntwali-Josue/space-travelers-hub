@@ -2,9 +2,6 @@ import { useSelector } from 'react-redux';
 
 const ReservedRockets = () => {
   const reservedRockets = useSelector((state) => state.rockets.reservedRockets);
-
-  console.log(reservedRockets);
-
   const mapReservedRockets = reservedRockets.map((rocket) => (
     <li key={rocket.id} className="list-group-item">{rocket.name}</li>
   ));
