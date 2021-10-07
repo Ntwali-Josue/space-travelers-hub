@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Rockets reducer App 1`] = `
+<h1>
+  Space Travelers Hub
+</h1>
+`;
+
 exports[`Rockets reducer initial state 1`] = `
 <h1>
   Space Travelers Hub
@@ -7,6 +13,12 @@ exports[`Rockets reducer initial state 1`] = `
 `;
 
 exports[`Rockets reducer initial state 2`] = `
+<h2>
+  Falcon 1
+</h2>
+`;
+
+exports[`Rockets reducer render rockets 1`] = `
 <h2>
   Falcon 1
 </h2>

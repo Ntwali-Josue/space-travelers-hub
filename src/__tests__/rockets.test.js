@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../redux/configureStore';
 import rocketsReducer from '../redux/rockets/rocketsReducer';
@@ -17,7 +17,7 @@ describe('Rockets reducer', () => {
     );
   });
 
-  test('fetch rockets', () => {
+  test('fetch rockets action', () => {
     const initialState = {
       status: 'empty',
       rocketList: [],
@@ -38,7 +38,7 @@ describe('Rockets reducer', () => {
     );
   });
 
-  test('initial state', () => {
+  test('App', () => {
     render(
       <Provider store={store}>
         <App />
@@ -47,7 +47,7 @@ describe('Rockets reducer', () => {
     expect(screen.getByText('Space Travelers Hub')).toMatchSnapshot();
   });
 
-  test('initial state', async () => {
+  test('render rockets', async () => {
     const rocketList = await fetchAPI('https://api.spacexdata.com/v3/rockets');
     const mapRockets = rocketList.map(
       (rocket) => (
