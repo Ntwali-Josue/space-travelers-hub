@@ -24,7 +24,7 @@ const MissionsPage = () => {
   ));
 
   return (
-    <div>
+    <div className="container-sm">
       {allMissions}
     </div>
   );
