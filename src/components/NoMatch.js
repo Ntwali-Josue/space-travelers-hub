@@ -1,6 +1,6 @@
 const NoMatch = () => (
   <div>
-    <p>Page no found!</p>
+    <h2>Page not found.</h2>
   </div>
 );
 

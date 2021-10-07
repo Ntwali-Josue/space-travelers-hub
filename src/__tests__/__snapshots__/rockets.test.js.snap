@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rockets reducer App 1`] = `
+<h1>
+  Space Travelers Hub
+</h1>
+`;
+
+exports[`Rockets reducer render rockets 1`] = `
+<h2>
+  Falcon 1
+</h2>
+`;
+
+exports[`Rockets reducer render rockets 2`] = `
+<h2>
+  Falcon 9
+</h2>
+`;
+
+exports[`Rockets reducer render rockets 3`] = `
+<h2>
+  Falcon Heavy
+</h2>
+`;
+
+exports[`Rockets reducer render rockets 4`] = `
+<h2>
+  Starship
+</h2>
+`;
