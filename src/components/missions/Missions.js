@@ -1,7 +1,7 @@
 // import { } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table, Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import {
   joinMission,
   leaveMission,
@@ -59,11 +59,11 @@ const Mission = (props) => {
           )}
           <td>
             {isJoined() ? (
-              <Button onClick={handleJoinMission}>Join Mission</Button>
+              <button onClick={handleJoinMission} type="button" className="btn btn-outline-secondary">Join Mission</button>
             ) : (
-              <Button onClick={handleLeaveMission} className="bg-danger">
+              <button onClick={handleLeaveMission} type="button" className="btn btn-outline-danger">
                 Leave Mission
-              </Button>
+              </button>
             )}
           </td>
         </tr>
