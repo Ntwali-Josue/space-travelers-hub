@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRocket } from '../../redux/rockets/rocketsReducer';
+import { fetchRockets } from '../../redux/rockets/rocketsReducer';
 import Rocket from './Rocket';
 
 const RocketsPage = () => {
@@ -10,7 +10,7 @@ const RocketsPage = () => {
 
   useEffect(() => {
     if (status === 'empty') {
-      dispatch(fetchRocket());
+      dispatch(fetchRockets());
     }
   }, [status]);
 
