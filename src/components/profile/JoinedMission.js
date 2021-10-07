@@ -6,16 +6,16 @@ const AllJoinedMissions = () => {
   const getJoinedMission = joinedMission.filter((mission) => mission);
 
   const renderJoinedMissions = getJoinedMission.map((mission) => (
-    <ul key={mission.mission_id} className="list-group w-25 mx-5">
-      <li className="list-group-item py-3">{mission.missionName}</li>
-    </ul>
+    <li key={mission.mission_id} className="list-group-item">{mission.missionName}</li>
   ));
 
   return (
-    <>
+    <section>
       <h1 className="mx-5">Missions</h1>
-      {renderJoinedMissions}
-    </>
+      <ul className="list-group">
+        {renderJoinedMissions}
+      </ul>
+    </section>
   );
 };
 
