@@ -13,7 +13,7 @@ describe('Rockets reducer', () => {
         status: 'empty',
         rocketList: [],
         reservedRockets: [],
-      }
+      },
     );
   });
 
@@ -26,7 +26,7 @@ describe('Rockets reducer', () => {
 
     const action = {
       type: 'spaceX/rockets/FETCH_ROCKETS/fulfilled',
-      payload: [{ name: 'Falcon 1'}, { name: 'Falcon 9'}],
+      payload: [{ name: 'Falcon 1' }, { name: 'Falcon 9' }],
     };
 
     expect(rocketsReducer(initialState, action)).toEqual(
@@ -34,7 +34,7 @@ describe('Rockets reducer', () => {
         status: 'fetched',
         rocketList: action.payload,
         reservedRockets: [],
-      }
+      },
     );
   });
 
@@ -42,7 +42,7 @@ describe('Rockets reducer', () => {
     render(
       <Provider store={store}>
         <App />
-      </Provider>
+      </Provider>,
     );
     expect(screen.getByText('Space Travelers Hub')).toMatchSnapshot();
   });
@@ -63,7 +63,7 @@ describe('Rockets reducer', () => {
     render(
       <Provider store={store}>
         {mapRockets}
-      </Provider>
+      </Provider>,
     );
     expect(screen.getByText('Falcon 1')).toMatchSnapshot();
     expect(screen.getByText('Falcon 9')).toMatchSnapshot();
