@@ -5,7 +5,7 @@ import Rocket from './Rocket';
 
 const RocketsPage = () => {
   const dispatch = useDispatch();
-  const rockets = useSelector((state) => state.rockets.rocketList);
+  const rocketList = useSelector((state) => state.rockets.rocketList);
   const status = useSelector((state) => state.rockets.status);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const RocketsPage = () => {
     }
   }, [status]);
 
-  const mapRockets = rockets.map(
+  const mapRockets = rocketList.map(
     (rocket) => (
       <Rocket
         key={rocket.rocket_id}

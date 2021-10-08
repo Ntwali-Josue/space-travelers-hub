@@ -1,16 +1,27 @@
 import { useSelector } from 'react-redux';
 
 const ReservedRockets = () => {
-  const reservedRockets = useSelector((state) => state.rockets.reservedRockets);
-  const mapReservedRockets = reservedRockets.map((rocket) => (
-    <li key={rocket.id} className="list-group-item">{rocket.name}</li>
-  ));
+  const rocketList = useSelector((state) => state.rockets.rocketList);
+  const mapReservedRockets = rocketList.map(
+    (rocket) => {
+      if (rocket.reserved === true) {
+        return (
+          <li key={rocket.rocket_id} className="list-group-item">{rocket.rocket_name}</li>
+        );
+      }
+      return '';
+    },
+  );
+
+  const noReserveRockets = () => mapReservedRockets[0] === '' && mapReservedRockets === [];
 
   return (
     <section>
-      <h1 className="mx-5">Rockets</h1>
-      <ul className="list-group">
-        {mapReservedRockets}
+      <ul className="list-group my-3">
+        <li className="list-group-item"><h1>Rockets</h1></li>
+        {noReserveRockets
+          ? <li className="list-group-item"><span>No booked rockets.</span></li>
+          : mapReservedRockets}
       </ul>
     </section>
   );
