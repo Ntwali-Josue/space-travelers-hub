@@ -54,7 +54,7 @@ describe('Rockets reducer', () => {
         <Rocket
           key={rocket.id}
           id={rocket.rocket_id}
-          imgURL={`${rocket.flickr_images[1]}`}
+          imgURL={`${rocket.flickr_images[0]}`}
           name={rocket.rocket_name}
           description={rocket.description}
         />

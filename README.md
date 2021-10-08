@@ -14,10 +14,10 @@ In this project we work with the real live data from the SpaceX API, by building
 
 ## Live Demo 
 
-[Live Demo Link](https://nostalgic-mirzakhani-0097a9.netlify.app/profile)
+[Live Demo Link](https://laughing-nightingale-5d1d42.netlify.app/)
 
 ## Getting Started 
-**To get started with the project, you can use the [Live Demo Link](https://nostalgic-mirzakhani-0097a9.netlify.app/profile) to access the website and interact with the features.**
+**To get started with the project, you can use the [Live Demo Link](https://laughing-nightingale-5d1d42.netlify.app/) to access the website and interact with the features.**
 
 To get a local copy up and running follow these simple example steps.
 
