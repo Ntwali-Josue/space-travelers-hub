@@ -20,7 +20,7 @@ const RocketsPage = () => {
         key={rocket.rocket_id}
         id={rocket.rocket_id}
         reserved={rocket.reserved === undefined ? false : rocket.reserved}
-        imgURL={`${rocket.flickr_images[1]}`}
+        imgURL={`${rocket.flickr_images[0]}`}
         name={rocket.rocket_name}
         description={rocket.description}
       />
