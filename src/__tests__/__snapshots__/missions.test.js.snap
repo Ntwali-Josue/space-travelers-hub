@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mission reducer render missions 1`] = `
+<td
+  class="mission-names"
+>
+  Thaicom
+</td>
+`;
+
+exports[`Mission reducer render missions 2`] = `
+<td
+  class="mission-names"
+>
+  Iridium NEXT
+</td>
+`;
+
+exports[`Mission reducer render missions 3`] = `
+<td
+  class="mission-names"
+>
+  Telstar
+</td>
+`;
+
+exports[`Mission reducer render missions 4`] = `
+<td
+  class="mission-names"
+>
+  SES
+</td>
+`;
