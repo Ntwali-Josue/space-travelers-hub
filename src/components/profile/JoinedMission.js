@@ -1,19 +1,33 @@
 import { useSelector } from 'react-redux';
 
 const AllJoinedMissions = () => {
-  const joinedMission = useSelector((state) => state.missions.joinedMission);
+  const missionList = useSelector((state) => state.missions.missionList);
+  const joinedMissions = missionList.filter((mission) => mission.reserved === true);
+  const mapMissions = joinedMissions.map(
+    (mission) => (
+      <li key={mission.mission_id} className="list-group-item">
+        <span>
+          {mission.mission_name}
+        </span>
+      </li>
+    ),
+  );
 
-  const getJoinedMission = joinedMission.filter((mission) => mission);
-
-  const renderJoinedMissions = getJoinedMission.map((mission) => (
-    <li key={mission.mission_id} className="list-group-item">{mission.missionName}</li>
-  ));
+  const noReservedMission = () => (
+    <li className="list-group-item">
+      <span>
+        No reserved missions.
+      </span>
+    </li>
+  );
 
   return (
     <section>
-      <h1 className="mx-5">Missions</h1>
-      <ul className="list-group">
-        {renderJoinedMissions}
+      <ul className="list-group my-3">
+        <li className="list-group-item"><h1>Missions</h1></li>
+        {joinedMissions.length === 0
+          ? noReservedMission()
+          : mapMissions}
       </ul>
     </section>
   );
