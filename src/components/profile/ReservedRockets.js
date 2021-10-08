@@ -5,18 +5,28 @@ const ReservedRockets = () => {
   const reservedRockets = rocketList.filter((rocket) => rocket.reserved === true);
   const mapRockets = reservedRockets.map(
     (rocket) => (
-      <li key={rocket.rocket_id} className="list-group-item"><span>{rocket.rocket_name}</span></li>
+      <li key={rocket.rocket_id} className="list-group-item">
+        <span>
+          {rocket.rocket_name}
+        </span>
+      </li>
     ),
   );
 
-  console.log(reservedRockets.length === 0);
+  const noReservedRockets = () => (
+    <li className="list-group-item">
+      <span>
+        No reserved rockets.
+      </span>
+    </li>
+  );
 
   return (
     <section>
       <ul className="list-group my-3">
         <li className="list-group-item"><h1>Rockets</h1></li>
         {reservedRockets.length === 0
-          ? <li className="list-group-item"><span>No reserved rockets.</span></li>
+          ? noReservedRockets()
           : mapRockets}
       </ul>
     </section>
