@@ -12,6 +12,8 @@ In this project we work with the real live data from the SpaceX API, by building
 - Boostrap, React
 - Webpack, Linters, Git, Netlify
 
+![screenshot](https://user-images.githubusercontent.com/58233753/136615925-451dd956-a2dc-4bf9-ba73-7dae5421c94a.png)
+
 ## Live Demo 
 
 [Live Demo Link](https://laughing-nightingale-5d1d42.netlify.app/)
