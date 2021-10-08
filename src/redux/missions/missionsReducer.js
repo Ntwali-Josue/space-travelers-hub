@@ -9,6 +9,7 @@ const initialState = {
   status: 'empty',
   missionList: [],
   joinedMission: [],
+  reserved: false,
 };
 
 export const fetchMission = createAsyncThunk('spaceX/missions/FETCH_MISSIONS', async () => {
@@ -39,12 +40,14 @@ const missionsReducer = (state = initialState, action) => {
         status: state.status,
         missionList: state.missionList,
         joinedMission: [...state.joinedMission, action.payload],
+        reserved: true,
       };
     case LEAVE_MISSION:
       return {
         status: state.status,
         missionList: state.missionList,
         joinedMission: [...action.payload],
+        reserved: !state.reserved,
       };
     default:
       return state;
