@@ -18,6 +18,7 @@ const MissionsPage = () => {
     <Mission
       key={mission.mission_id}
       id={mission.mission_id}
+      reserved={mission.reserved === undefined ? false : mission.reserved}
       missionName={mission.mission_name}
       description={mission.description}
     />

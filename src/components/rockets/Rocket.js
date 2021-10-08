@@ -5,28 +5,31 @@ import './Rocket.css';
 
 const Rocket = (props) => {
   const dispatch = useDispatch();
-  const reservedRockets = useSelector((state) => state.rockets.reservedRockets);
+  const rocketList = useSelector((state) => state.rockets.rocketList);
   const {
     id,
+    reserved,
     imgURL,
     name,
     description,
   } = props;
 
-  const isReserved = () => {
-    const reservation = reservedRockets.filter((rocket) => rocket.id === id);
-    if (reservation[0] === undefined) {
-      return true;
-    }
-    return false;
+  const updateReservation = (value = false) => {
+    const returnReserveRocket = rocketList.map((rocket) => {
+      if (rocket.rocket_id !== id) {
+        return rocket;
+      }
+      return { ...rocket, reserved: value };
+    });
+    return returnReserveRocket;
   };
 
   const handleReservation = () => {
-    dispatch(reserveRocket({ id, name }));
+    dispatch(reserveRocket(updateReservation(true)));
   };
 
   const handleCancellation = () => {
-    dispatch(cancelRocket(reservedRockets.filter((rocket) => rocket.id !== id)));
+    dispatch(cancelRocket(updateReservation()));
   };
 
   const reserveButton = () => (
@@ -53,10 +56,10 @@ const Rocket = (props) => {
       <div className="ps-4">
         <h2>{name}</h2>
         <p>
-          {isReserved() || <span className="reserved">Reserved</span>}
+          {reserved && <span className="reserved">Reserved</span>}
           {description}
         </p>
-        {isReserved() ? reserveButton() : cancelButton()}
+        {reserved ? cancelButton() : reserveButton()}
       </div>
     </div>
   );
@@ -64,6 +67,7 @@ const Rocket = (props) => {
 
 Rocket.propTypes = {
   id: PropTypes.string,
+  reserved: PropTypes.bool,
   imgURL: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
@@ -71,6 +75,7 @@ Rocket.propTypes = {
 
 Rocket.defaultProps = {
   id: '',
+  reserved: false,
   imgURL: '',
   name: '',
   description: '',

@@ -9,25 +9,27 @@ import './Mission.css';
 
 const Mission = (props) => {
   const {
-    id, missionName, description,
+    id, reserved, missionName, description,
   } = props;
   const dispatch = useDispatch();
-  const joinedMission = useSelector((state) => state.missions.joinedMission);
+  const missionList = useSelector((state) => state.missions.missionList);
 
-  const isJoined = () => {
-    const joined = joinedMission.filter((mission) => mission.id === id);
-    if (joined[0] === undefined) {
-      return true;
-    }
-    return false;
+  const updateJoin = (value = false) => {
+    const returnJoinedMission = missionList.map((mission) => {
+      if (mission.mission_id !== id) {
+        return mission;
+      }
+      return { ...mission, reserved: value };
+    });
+    return returnJoinedMission;
   };
 
   const handleJoinMission = () => {
-    dispatch(joinMission({ id, missionName }));
+    dispatch(joinMission(updateJoin(true)));
   };
 
   const handleLeaveMission = () => {
-    dispatch(leaveMission(joinedMission.filter((mission) => mission.id !== id)));
+    dispatch(leaveMission(updateJoin()));
   };
 
   return (
@@ -44,7 +46,7 @@ const Mission = (props) => {
         <tr>
           <td className="mission-names">{missionName}</td>
           <td>{description}</td>
-          {isJoined() ? (
+          {reserved ? (
             <td className="text-center">
               {' '}
               <span className="bg-secondary rounded-pill px-2">
@@ -57,12 +59,10 @@ const Mission = (props) => {
             </td>
           )}
           <td>
-            {isJoined() ? (
-              <button onClick={handleJoinMission} type="button" className="btn btn-outline-secondary">Join Mission</button>
+            {reserved ? (
+              <button onClick={handleLeaveMission} type="button" className="btn btn-outline-danger">Leave Mission</button>
             ) : (
-              <button onClick={handleLeaveMission} type="button" className="btn btn-outline-danger">
-                Leave Mission
-              </button>
+              <button onClick={handleJoinMission} type="button" className="btn btn-outline-secondary">Join Mission</button>
             )}
           </td>
         </tr>
@@ -73,12 +73,14 @@ const Mission = (props) => {
 
 Mission.propTypes = {
   id: PropTypes.string,
+  reserved: PropTypes.bool,
   missionName: PropTypes.string,
   description: PropTypes.string,
 };
 
 Mission.defaultProps = {
   id: '',
+  reserved: false,
   missionName: '',
   description: '',
 };
