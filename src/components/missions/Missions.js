@@ -47,15 +47,15 @@ const Mission = (props) => {
           <td className="mission-names">{missionName}</td>
           <td>{description}</td>
           {reserved ? (
+            <td className="text-white">
+              <span className="bg-info rounded-pill px-2">Active Member</span>
+            </td>
+          ) : (
             <td className="text-center">
               {' '}
               <span className="bg-secondary rounded-pill px-2">
                 NOT A MEMBER
               </span>
-            </td>
-          ) : (
-            <td className="text-white">
-              <span className="bg-info rounded-pill px-2">Active Member</span>
             </td>
           )}
           <td>
